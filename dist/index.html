@@ -13,10 +13,34 @@
 
       body {
         display: flex;
+        flex-direction: column;
         align-items: center;
         justify-content: center;
+        gap: 12px;
+      }
+
+      .date-diff {
+        color: red;
+        text-align: center;
+        font-size: 18px;
       }
     </style>
   </head>
-  <body><img src="asserts/ninjia.png" alt="Ninja"></body>
+  <body>
+    <img src="asserts/ninjia.png" alt="Ninja">
+    <div class="date-diff" id="date-diff"></div>
+    <script>
+      const currentDate = new Date();
+      const startTime = Date.UTC(2012, 5, 30);
+      const currentTime = Date.UTC(
+        currentDate.getFullYear(),
+        currentDate.getMonth(),
+        currentDate.getDate()
+      );
+      const msPerDay = 24 * 60 * 60 * 1000;
+      const dayDiff = Math.floor((currentTime - startTime) / msPerDay);
+
+      document.getElementById("date-diff").textContent = dayDiff;
+    </script>
+  </body>
 </html>
